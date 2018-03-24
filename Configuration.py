@@ -5,8 +5,6 @@
 #
 
 import wx
-import os
-import sys
 import pathlib2
 import subprocess
 from pprint import pprint, pformat
@@ -33,7 +31,7 @@ try:
 		
 except:
 	pprint( 'Couldnt open Settings.cfg, using defaults' )
-	Config = { 'videomode' : 0, 'stereomode' : 0, 'nomipmap' : 0, 'fixedtime' : 0, 'sizewindow' : 2, 'sizefullscreen' : 0, 'bitdepth' : 2, 'refreshrate' : 2, 'pathplayer' : 'engine/win/blenderplayer.exe', 'pathfile' : 'data/main.blend' }
+	Config = { 'videomode' : 0, 'stereomode' : 0, 'nomipmap' : 0, 'fixedtime' : 0, 'sizewindow' : 2, 'sizefullscreen' : 0, 'bitdepth' : 2, 'refreshrate' : 2, 'pathplayer' : 'engine/blenderplayer.exe', 'pathfile' : 'data/main.blend' }
 
 class MyFrame(wx.Frame):
 	def __init__(self, *args, **kwds):
