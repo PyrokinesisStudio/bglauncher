@@ -23,7 +23,7 @@ except:
 	
 if True:
 		
-	cur_dir = os.path.basename(os.path.dirname(__file__))
+	cur_dir = os.path.basename(pathlib2.Path('').resolve().as_posix())
 	
 	if cur_dir == 'bglauncher':
 		
@@ -32,7 +32,7 @@ if True:
 			Config['pathfile'] = 'dist_win/data/testfile.blend'
 		
 		if os.name == 'posix':
-			Config['pathplayer'] = 'dist_linux/engine/blenderplayer.exe'
+			Config['pathplayer'] = 'dist_linux/engine/blenderplayer'
 			Config['pathfile'] = 'dist_linux/data/testfile.blend'
 	
 	if cur_dir == 'dist_win':
@@ -43,8 +43,8 @@ if True:
 		Config['pathplayer'] = 'engine/blenderplayer'
 		Config['pathfile'] = 'data/testfile.blend'
 	
-	pathplayer = pathlib2.Path( Config['pathplayer'] ).resolve()
-	pathfile = pathlib2.Path( Config['pathfile'] ).resolve()
+	pathplayer = pathlib2.Path(pathlib2.Path( Config['pathplayer'] ).resolve().as_posix())
+	pathfile = pathlib2.Path(pathlib2.Path( Config['pathfile'] ).resolve().as_posix())
 	
 	command = ''
 	

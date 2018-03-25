@@ -26,7 +26,7 @@ except:
 	
 def on_ButtonPlay_clicked(event):
 	
-	cur_dir = os.path.basename(os.path.dirname(__file__))
+	cur_dir = os.path.basename(pathlib2.Path('').resolve().as_posix())
 	
 	if cur_dir == 'bglauncher':
 		
@@ -36,7 +36,7 @@ def on_ButtonPlay_clicked(event):
 			Config['pathsplash'] = 'dist_win/other/Splash.png'
 		
 		if os.name == 'posix':
-			Config['pathplayer'] = 'dist_linux/engine/blenderplayer.exe'
+			Config['pathplayer'] = 'dist_linux/engine/blenderplayer'
 			Config['pathfile'] = 'dist_linux/data/testfile.blend'
 			Config['pathsplash'] = 'dist_linux/other/Splash.png'
 	
@@ -50,8 +50,8 @@ def on_ButtonPlay_clicked(event):
 		Config['pathfile'] = 'data/testfile.blend'
 		Config['pathsplash'] = 'data/other/Splash.png'
 	
-	pathplayer = pathlib2.Path( Config['pathplayer'] ).resolve()
-	pathfile = pathlib2.Path( Config['pathfile'] ).resolve()
+	pathplayer = pathlib2.Path(pathlib2.Path( Config['pathplayer'] ).resolve().as_posix())
+	pathfile = pathlib2.Path(pathlib2.Path( Config['pathfile'] ).resolve().as_posix())
 	
 	command = ''
 	
@@ -150,14 +150,16 @@ builder.add_from_file("Configuration.glade")
 builder.connect_signals(handlers)
 
 # Show all
-window = builder.get_object("MainWindow")
-window.show_all()
 builder.get_object("ComboStereoMode").set_active(Config['stereomode'])
 builder.get_object("ComboVideoMode").set_active(Config['videomode'])
 builder.get_object("ComboWindowSize").set_active(Config['sizewindow'])
 builder.get_object("ComboFullscreenResolution").set_active(Config['sizefullscreen'])
 builder.get_object("ComboBitDepth").set_active(Config['bitdepth'])
 builder.get_object("ComboRefreshRate").set_active(Config['refreshrate'])
+builder.get_object("CheckNoMipmap").set_active(Config['nomipmap'])
+builder.get_object("CheckFixedTime").set_active(Config['fixedtime'])
+window = builder.get_object("MainWindow")
+window.show_all()
 
 # Initialize
 gtk.main()
