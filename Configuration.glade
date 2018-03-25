@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="2.24"/>
+  <!-- interface-naming-policy project-wide -->
+  <object class="GtkListStore" id="ListBitDepths">
+    <columns>
+      <!-- column-name BitDepths -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">16 bits</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">24 bits</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">32 bits</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="ListFullscreenResolutions">
+    <columns>
+      <!-- column-name FullscreenResolutions -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Native</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">640x480</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">800x600</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1024x768</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1280x720</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1366x768</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1920x1080</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="ListRefreshRates">
+    <columns>
+      <!-- column-name RefreshRates -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">30 Hz</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">45 Hz</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">60 Hz</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">75 Hz</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">90 Hz</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">120 Hz</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="ListStereoModes">
+    <columns>
+      <!-- column-name StereoModes -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">No Stereo</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Anaglyph</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Side By Side</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Sync Doubling</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">3D TV Top Bottom</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Interlace</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Vinterlace</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">HW Page Flip</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="ListVideoModes">
+    <columns>
+      <!-- column-name VideoModes -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">Windowed</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">Fullscreen</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkListStore" id="ListWindowSizes">
+    <columns>
+      <!-- column-name WindowSizes -->
+      <column type="gchararray"/>
+    </columns>
+    <data>
+      <row>
+        <col id="0" translatable="yes">640x480</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">800x600</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1024x768</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1280x720</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1366x768</col>
+      </row>
+      <row>
+        <col id="0" translatable="yes">1920x1080</col>
+      </row>
+    </data>
+  </object>
+  <object class="GtkWindow" id="MainWindow">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">Configuration</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center</property>
+    <property name="icon">Configuration.ico</property>
+    <property name="deletable">False</property>
+    <child>
+      <object class="GtkVBox" id="MainVBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkNotebook" id="MainNotebook">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <child>
+              <object class="GtkVBox" id="VBoxGeneral">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel" id="LabelStereoMode">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Stereo Mode (3D)</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBox" id="ComboStereoMode">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="model">ListStereoModes</property>
+                    <property name="active">0</property>
+                    <signal name="changed" handler="on_ComboStereoMode_changed" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="CellStereoModes"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="LabelVideoMode">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Video Mode</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBox" id="ComboVideoMode">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="model">ListVideoModes</property>
+                    <property name="active">0</property>
+                    <signal name="changed" handler="on_ComboVideoMode_changed" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkHBox" id="HBoxGeneral">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkCheckButton" id="CheckNoMipmap">
+                        <property name="label" translatable="yes">Disable Mipmaps</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_CheckNoMipmap_toggled" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="CheckFixedTime">
+                        <property name="label" translatable="yes">Fixed Time</property>
+                        <property name="use_action_appearance">False</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_CheckFixedTime_toggled" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="LabelGeneral">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">General</property>
+              </object>
+              <packing>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVBox" id="VBoxWindowed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel" id="LabelWindowSize">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Window Size</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBox" id="ComboWindowSize">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="model">ListWindowSizes</property>
+                    <property name="active">1</property>
+                    <signal name="changed" handler="on_ComboWindowSize_changed" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext2"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="LabelWindowed">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Windowed</property>
+              </object>
+              <packing>
+                <property name="position">1</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVBox" id="VBoxFullscreen">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel" id="LabelFullscreenResolution">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Resolution</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBox" id="ComboFullscreenResolution">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="model">ListFullscreenResolutions</property>
+                    <property name="active">0</property>
+                    <signal name="changed" handler="on_ComboFullscreenResolution_changed" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext3"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="LabelBitDepth">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Bit Depth</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBox" id="ComboBitDepth">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="model">ListBitDepths</property>
+                    <property name="active">2</property>
+                    <signal name="changed" handler="on_ComboBitDepth_changed" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext4"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="LabelRefreshRate">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Refresh Rate</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBox" id="ComboRefreshRate">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="model">ListRefreshRates</property>
+                    <property name="active">2</property>
+                    <signal name="changed" handler="on_ComboRefreshRate_changed" swapped="no"/>
+                    <child>
+                      <object class="GtkCellRendererText" id="cellrenderertext5"/>
+                      <attributes>
+                        <attribute name="text">0</attribute>
+                      </attributes>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">5</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="LabelFullscreen">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Fullscreen</property>
+              </object>
+              <packing>
+                <property name="position">2</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVBox" id="vbox1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel" id="label2">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">BGLauncher 0.2
+A Blender Game Engine Tool
+
+Joel G. Silva, Python, PyGTK
+
+github.com/joelgomes1994/bglauncher</property>
+                    <property name="justify">center</property>
+                  </object>
+                  <packing>
+                    <property name="expand">True</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">About</property>
+              </object>
+              <packing>
+                <property name="position">3</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkHBox" id="HBoxButtons">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkButton" id="ButtonQuit">
+                <property name="label" translatable="yes">Quit</property>
+                <property name="use_action_appearance">False</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_ButtonQuit_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="ButtonSave">
+                <property name="label" translatable="yes">Save</property>
+                <property name="use_action_appearance">False</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_ButtonSave_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="ButtonPlay">
+                <property name="label" translatable="yes">PLAY!</property>
+                <property name="use_action_appearance">False</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="clicked" handler="on_ButtonPlay_clicked" swapped="no"/>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="WindowSplash">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Launcher</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center</property>
+    <property name="icon_name">input-gaming</property>
+    <property name="decorated">False</property>
+    <property name="deletable">False</property>
+    <child>
+      <object class="GtkImage" id="ImageSplash">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="stock">gtk-missing-image</property>
+      </object>
+    </child>
+  </object>
+</interface>

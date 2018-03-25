@@ -5,3 +5,7 @@
 /*.spec
 /Launcher.exe
 /releases
+/*.bak
+/old
+/dist_win
+/dist_linux

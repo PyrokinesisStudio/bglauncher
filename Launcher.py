@@ -1,5 +1,6 @@
 import pathlib2
 import subprocess
+import os
 from pprint import pprint, pformat
 from ast import literal_eval as litev
 
@@ -22,6 +23,26 @@ except:
 	
 if True:
 		
+	cur_dir = os.path.basename(os.path.dirname(__file__))
+	
+	if cur_dir == 'bglauncher':
+		
+		if os.name == 'nt':
+			Config['pathplayer'] = 'dist_win/engine/blenderplayer.exe'
+			Config['pathfile'] = 'dist_win/data/testfile.blend'
+		
+		if os.name == 'posix':
+			Config['pathplayer'] = 'dist_linux/engine/blenderplayer.exe'
+			Config['pathfile'] = 'dist_linux/data/testfile.blend'
+	
+	if cur_dir == 'dist_win':
+		Config['pathplayer'] = 'engine/blenderplayer.exe'
+		Config['pathfile'] = 'data/testfile.blend'
+	
+	if cur_dir == 'dist_linux':
+		Config['pathplayer'] = 'engine/blenderplayer'
+		Config['pathfile'] = 'data/testfile.blend'
+	
 	pathplayer = pathlib2.Path( Config['pathplayer'] ).resolve()
 	pathfile = pathlib2.Path( Config['pathfile'] ).resolve()
 	
@@ -46,4 +67,4 @@ if True:
 		pprint('Running game under the following command: ')
 		pprint(command)
 		
-		subprocess.call( command )
+		subprocess.Popen(command, shell=True)
