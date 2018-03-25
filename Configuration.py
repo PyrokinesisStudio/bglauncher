@@ -209,7 +209,7 @@ class MyFrame(wx.Frame):
 		
 		if pathplayer.exists() and pathfile.exists():
 			
-			command += '"' + str(pathplayer) + '" '
+			command += '"' + str(pathplayer.as_posix()) + '" '
 			
 			if Config['videomode'] == 0:
 				command += '-w '+ str(sizes_window[Config['sizewindow']][0]) + ' ' + str(sizes_window[Config['sizewindow']][1]) + ' 0 0 '
@@ -221,12 +221,12 @@ class MyFrame(wx.Frame):
 			
 			command += '-g fixedtime=' + str(Config['fixedtime']) + ' '
 			
-			command += '"' + str(pathfile) + '"'
+			command += '"' + str(pathfile.as_posix()) + '"'
 			
 			pprint('Running game under the following command: ')
 			pprint(command)
 			
-			subprocess.Popen(command)
+			subprocess.call(command)
 			
 			self.Destroy()
 		
