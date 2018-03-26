@@ -43,12 +43,12 @@ def on_ButtonPlay_clicked(event):
 	if cur_dir == 'dist_win':
 		Config['pathplayer'] = 'engine/blenderplayer.exe'
 		Config['pathfile'] = 'data/testfile.blend'
-		Config['pathsplash'] = 'data/other/Splash.png'
+		Config['pathsplash'] = 'other/Splash.png'
 	
 	if cur_dir == 'dist_linux':
 		Config['pathplayer'] = 'engine/blenderplayer'
 		Config['pathfile'] = 'data/testfile.blend'
-		Config['pathsplash'] = 'data/other/Splash.png'
+		Config['pathsplash'] = 'other/Splash.png'
 	
 	pathplayer = pathlib2.Path(pathlib2.Path( Config['pathplayer'] ).resolve().as_posix())
 	pathfile = pathlib2.Path(pathlib2.Path( Config['pathfile'] ).resolve().as_posix())
@@ -79,7 +79,9 @@ def on_ButtonPlay_clicked(event):
 	splash = builder.get_object('WindowSplash')
 	image = builder.get_object('ImageSplash')
 	main = builder.get_object('MainWindow')
-	image.set_from_file(Config['pathsplash'])
+	
+	path_image = pathlib2.Path( Config['pathsplash'] ).resolve().as_posix()
+	image.set_from_file(path_image)
 	splash.show()
 	main.hide_all()
 	gobject.timeout_add(Config['splashtime'], on_timeout)
